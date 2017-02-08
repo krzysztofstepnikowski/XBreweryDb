@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:XBreweryDbApp.Behaviors"
+             x:Class="XBreweryDbApp.DetailPage"
+             Title="Details">
+
+ 
+    <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="15,10,10,15">
+
+        <Image Source="icon.png" />
+        <Label TextColor="Black"
+               FontAttributes="Bold"
+               FontSize="17"
+               Text="Volt:" />
+        <Label TextColor="Gray"
+               FontAttributes="Italic"
+               FontSize="15"
+               Text="5,6%" />
+        <Label TextColor="Black"
+               FontAttributes="Bold"
+               FontSize="17"
+               Text="Description:" />
+
+      <ScrollView>
+        <Label TextColor="Gray"
+               FontAttributes="Italic"
+               FontSize="15"
+               Text="Lorem ipsum dolor sit amet leo. Aenean pellentesque accumsan. 
+                     Fusce wisi semper eu, neque. Sed at erat volutpat. Pellentesque egestas blandit, quam. 
+                     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                     Mauris ornare ultrices velit sit amet erat. Vestibulum ante at laoreet metus facilisis nunc, fringilla sit amet mauris consequat eu, 
+                     posuere cubilia Curae, Donec est. Integer mi libero, egestas at, accumsan augue varius nunc iaculis in, libero. 
+                     Praesent rutrum. In laoreet metus semper risus nibh condimentum est iaculis odio consequat ac, vestibulum quis, l
+                     acinia scelerisque, dui lectus pharetra eget, lacinia ut, lectus. Nam hendrerit. Fusce nulla. Aenean tincidunt tempus. 
+                     Pellentesque sagittis, nunc interdum dui lectus at ipsum. Nam eu justo. Pellentesque molestie sagittis.Lorem ipsum dolor sit amet leo. 
+                     Aenean pellentesque accumsan. 
+                     Fusce wisi semper eu, neque. Sed at erat volutpat. Pellentesque egestas blandit, quam. 
+                     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                     Mauris ornare ultrices velit sit amet erat. Vestibulum ante at laoreet metus facilisis nunc, fringilla sit amet mauris consequat eu, 
+                     posuere cubilia Curae, Donec est. Integer mi libero, egestas at, accumsan augue varius nunc iaculis in, libero. 
+                     Praesent rutrum. In laoreet metus semper risus nibh condimentum est iaculis odio consequat ac, vestibulum quis, l
+                     acinia scelerisque, dui lectus pharetra eget, lacinia ut, lectus. Nam hendrerit. Fusce nulla. Aenean tincidunt tempus. 
+                     Pellentesque sagittis, nunc interdum dui lectus at ipsum. Nam eu justo. Pellentesque molestie sagittis." />
+
+      </ScrollView>
+
+        <Button Text="Dodaj do ulubionych"
+                BackgroundColor="Red"
+                TextColor="White"
+                HorizontalOptions="FillAndExpand">
+      <Button.Behaviors>
+         <behaviors:ChangeFavoriteButtonBehavior/>
+      </Button.Behaviors>
+          </Button>
+       
+
+
+    </StackLayout>
+
+</ContentPage>

@@ -12,18 +12,17 @@ namespace XBreweryDbApp
             get { return _breweries; }
             set
             {
-                if (_breweries != null)
-                {
-                    _breweries = value;
-                    OnPropertyChanged();
-                }
+                if (_breweries == null) return;
+                _breweries = value;
+                OnPropertyChanged();
             }
         }
+
         public MainPage()
         {
-            
             InitializeComponent();
             GetItems();
+            BreweryListView.ItemSelected += (sender, e) => BreweryListView.SelectedItem = null;
             BindingContext = this;
         }
 
@@ -31,11 +30,14 @@ namespace XBreweryDbApp
         {
             _breweries = new ObservableCollection<Brewery>();
             for (var i = 1; i <= 20; i++)
-            {
                 _breweries.Add(new Brewery {Name = "Brewery " + i});
-            }
 
             return _breweries;
+        }
+
+        private void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Navigation.PushAsync(new DetailPage());
         }
     }
 }

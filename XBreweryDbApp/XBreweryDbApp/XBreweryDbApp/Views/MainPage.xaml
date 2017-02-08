@@ -1,27 +1,48 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XBreweryDbApp;assembly=XBreweryDbApp"
+             xmlns:behaviors="clr-namespace:XBreweryDbApp.Behaviors;assembly=XBreweryDbApp"
              x:Class="XBreweryDbApp.MainPage"
              Title="XBreweryDb">
 
-    <StackLayout Orientation="Vertical" Padding="8,10,8,10">
-    <ListView x:Name="BreweryListView" ItemsSource="{Binding Breweries}">
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="0,5,0,0">
-                        <Label Text="{Binding Name}"
-                               FontSize="18"
-                               TextColor="Black"/>
-                    </StackLayout>
-                </ViewCell>
+    <StackLayout Orientation="Vertical" Padding="8,10,8,10" BackgroundColor="White">
+        <ListView x:Name="BreweryListView"
+                  ItemsSource="{Binding Breweries}"
+                  RowHeight="50"
+                  ItemTapped="OnItemTapped"
+                  SeparatorColor="Silver">
 
-            </DataTemplate>
-        </ListView.ItemTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
 
 
-    </ListView>
+                        <StackLayout Orientation="Horizontal" Padding="3,5,3,5">
+                            <Image Source="icon.png" />
+                            <Label Text="{Binding Name}"
+                                   FontSize="18"
+                                   TextColor="Black"
+                                   Margin="5" />
+                            <Button Image="ic_favorite_border_black_24dp.png"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="EndAndExpand"
+                                    HeightRequest="80"
+                                    WidthRequest="40"
+                                    VerticalOptions="EndAndExpand">
+                                <Button.Behaviors>
+                                    <behaviors:ChangeFavoriteIconButtonBehavior />
+                                </Button.Behaviors>
+                            </Button>
+
+                        </StackLayout>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+        </ListView>
     </StackLayout>
 
 </ContentPage>
