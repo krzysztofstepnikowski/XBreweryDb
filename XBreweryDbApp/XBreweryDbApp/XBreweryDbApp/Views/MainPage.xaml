@@ -5,7 +5,7 @@
              Title="XBreweryDb">
 
     <StackLayout Orientation="Vertical" Padding="8,10,8,10">
-    <ListView x:Name="BreweryListView">
+    <ListView x:Name="BreweryListView" ItemsSource="{Binding Breweries}">
 
         <ListView.ItemTemplate>
             <DataTemplate>

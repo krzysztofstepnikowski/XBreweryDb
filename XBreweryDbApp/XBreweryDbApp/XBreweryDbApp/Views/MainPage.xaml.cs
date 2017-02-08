@@ -5,21 +5,37 @@ namespace XBreweryDbApp
 {
     public partial class MainPage : ContentPage
     {
+        private ObservableCollection<Brewery> _breweries;
+
+        public ObservableCollection<Brewery> Breweries
+        {
+            get { return _breweries; }
+            set
+            {
+                if (_breweries != null)
+                {
+                    _breweries = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public MainPage()
         {
+            
             InitializeComponent();
-            BreweryListView.ItemsSource = GetItems();
+            GetItems();
+            BindingContext = this;
         }
 
         private ObservableCollection<Brewery> GetItems()
         {
-            var breweries = new ObservableCollection<Brewery>();
+            _breweries = new ObservableCollection<Brewery>();
             for (var i = 1; i <= 20; i++)
             {
-                breweries.Add(new Brewery {Name = "Brewery " + i});
+                _breweries.Add(new Brewery {Name = "Brewery " + i});
             }
 
-            return breweries;
+            return _breweries;
         }
     }
 }
