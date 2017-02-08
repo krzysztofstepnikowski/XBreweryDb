@@ -1,0 +1,27 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XBreweryDbApp;assembly=XBreweryDbApp"
+             x:Class="XBreweryDbApp.MainPage"
+             Title="XBreweryDb">
+
+    <StackLayout Orientation="Vertical" Padding="8,10,8,10">
+    <ListView x:Name="BreweryListView">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="0,5,0,0">
+                        <Label Text="{Binding Name}"
+                               FontSize="18"
+                               TextColor="Black"/>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+
+    </ListView>
+    </StackLayout>
+
+</ContentPage>

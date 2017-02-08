@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace XBreweryDbApp
 {
-    public partial class MainPage : ContentPage
+   public class Brewery
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        public string Name { get; set; }
     }
 }
