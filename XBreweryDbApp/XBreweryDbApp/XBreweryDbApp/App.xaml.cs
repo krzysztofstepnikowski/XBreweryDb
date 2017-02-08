@@ -13,7 +13,7 @@ namespace XBreweryDbApp
         {
             InitializeComponent();
 
-            MainPage = new XBreweryDbApp.MainPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
