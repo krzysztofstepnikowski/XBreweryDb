@@ -21,9 +21,9 @@ namespace XBreweryDbApp.Behaviors
         private void ChangeIconButton(object sender, EventArgs e)
         {
             var button = sender as Button;
-            button.Image.File = button.Image.File != "ic_favorite_border_black_24dp.png"
-                ? button.Image.File = "ic_favorite_border_black_24dp.png"
-                : button.Image.File = "ic_favorite_black_24dp.png";
+            button.Image.File = button.Image.File != "ic_favorite_border.png"
+                ? button.Image.File = "ic_favorite_border.png"
+                : button.Image.File = "ic_favorite.png";
         }
     }
 }

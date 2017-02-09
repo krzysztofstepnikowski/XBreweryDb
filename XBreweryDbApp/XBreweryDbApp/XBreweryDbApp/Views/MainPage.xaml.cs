@@ -20,6 +20,7 @@ namespace XBreweryDbApp
 
         public MainPage()
         {
+           
             InitializeComponent();
             GetItems();
             BreweryListView.ItemSelected += (sender, e) => BreweryListView.SelectedItem = null;

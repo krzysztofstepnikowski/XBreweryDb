@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Xamarin.Forms;
 
 namespace XBreweryDbApp
@@ -15,6 +14,7 @@ namespace XBreweryDbApp
 
             MainPage = new NavigationPage(new MainPage());
         }
+
 
         protected override void OnStart()
         {

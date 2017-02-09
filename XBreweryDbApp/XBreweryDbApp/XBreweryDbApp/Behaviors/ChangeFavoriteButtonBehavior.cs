@@ -23,9 +23,9 @@ namespace XBreweryDbApp.Behaviors
         {
             var button = sender as Button;
             button.BackgroundColor = button.BackgroundColor != Color.Red ? Color.Red : Color.Green;
-            button.Text = button.Text != "Dodaj do ulubionych"
-                ? button.Text = "Dodaj do ulubionych"
-                : button.Text = "Usuń z ulubionych";
+            button.Text = button.Text != "Add to favorites"
+                ? button.Text = "Add to favorites"
+                : button.Text = "Delete from favorites";
         }
     }
 }
