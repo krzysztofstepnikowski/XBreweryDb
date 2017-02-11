@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using XBreweryDbApp.Adapters.Features;
+using XBreweryDbApp.Features.BreweryDescription;
+using XBreweryDbApp.Features.BreweryList;
+using XBreweryDbApp.Features.Favorite;
 
 namespace XBreweryDbApp
 {
@@ -12,7 +12,11 @@ namespace XBreweryDbApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            var favoriteManager = new FavoriteBreweryManager();
+            var detailPageFacade = new DetailPageFeatureFacade(favoriteManager, new BreweryDescriptionProvider());
+            var mainPageFacade = new MainPageFeatureFacade(favoriteManager, new BreweryListProvider(), detailPageFacade);
+
+            MainPage = new NavigationPage(new MainPage(mainPageFacade));
         }
 
 
