@@ -6,12 +6,13 @@ namespace XBreweryDbApp
     public partial class MainPage : ContentPage
     {
         private IMainPageFeatures _features;
+      
 
         public MainPage(IMainPageFeatures features)
         {
             _features = features;
             InitializeComponent();
-            BreweryListView.ItemsSource = _features.GetBreweries();
+           
             BreweryListView.ItemSelected += (sender, e) => BreweryListView.SelectedItem = null;
         }
 
@@ -48,6 +49,13 @@ namespace XBreweryDbApp
         {
             var brewery = e.Item as Brewery;
             _features.ShowBreweryDetailsAsync(brewery.Id, Navigation);            
+        }
+
+        protected override void OnAppearing()
+        {
+            BreweryListView.ItemsSource = _features.GetBreweries();
+            base.OnAppearing();
+          
         }
     }
 }

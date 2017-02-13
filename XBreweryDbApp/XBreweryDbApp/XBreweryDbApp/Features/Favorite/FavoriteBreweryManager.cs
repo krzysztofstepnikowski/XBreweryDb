@@ -4,7 +4,12 @@ namespace XBreweryDbApp.Features.Favorite
 {
     class FavoriteBreweryManager
     {
-        private HashSet<string> _favoriteBrewerage = new HashSet<string>();
+        private HashSet<string> _favoriteBrewerage;
+
+        public FavoriteBreweryManager(HashSet<string> favoriteBrewerage)
+        {
+            _favoriteBrewerage = favoriteBrewerage;
+        }
 
         public void SetAsFavorite(string id)
         {
@@ -20,5 +25,7 @@ namespace XBreweryDbApp.Features.Favorite
         {
             return _favoriteBrewerage.Contains(id);
         }
+
+        
     }
 }
