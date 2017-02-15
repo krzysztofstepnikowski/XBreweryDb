@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Prism.Unity;
 using Xamarin.Forms;
 using XBreweryDbApp.Adapters.Features;
 using XBreweryDbApp.Features.BreweryDescription;

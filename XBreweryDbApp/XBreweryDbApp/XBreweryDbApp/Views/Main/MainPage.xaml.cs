@@ -6,14 +6,15 @@ namespace XBreweryDbApp
     public partial class MainPage : ContentPage
     {
         private IMainPageFeatures _features;
-      
+
 
         public MainPage(IMainPageFeatures features)
         {
             _features = features;
-            InitializeComponent();
-           
+            InitializeComponent();      
+   
             BreweryListView.ItemSelected += (sender, e) => BreweryListView.SelectedItem = null;
+           
         }
 
         private void OnItemFavoriteTapped(object sender, EventArgs e)
@@ -35,27 +36,32 @@ namespace XBreweryDbApp
             else
             {
                 _features.RemoveFromFavorites(brewery.Id);
+                
             }
+
+          
         }
 
-        private static void UpdateFavoriteImage(Button button, Brewery brewery)
+        private void UpdateFavoriteImage(Button button, Brewery brewery)
         {
             button.Image.File = brewery.IsFavorite
                 ? button.Image.File = "ic_favorite.png"
                 : button.Image.File = "ic_favorite_border.png";
+
+//            _features.GetBreweries();
         }
 
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var brewery = e.Item as Brewery;
-            _features.ShowBreweryDetailsAsync(brewery.Id, Navigation);            
+            _features.ShowBreweryDetailsAsync(brewery.Id, Navigation);
         }
 
         protected override void OnAppearing()
         {
-            BreweryListView.ItemsSource = _features.GetBreweries();
             base.OnAppearing();
-          
+            BreweryListView.ItemsSource = _features.GetBreweries();
+
         }
     }
 }
