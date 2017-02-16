@@ -1,4 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Diagnostics;
+using Xamarin.Forms;
+using XBreweryDbPrismApp.Models;
 using XBreweryDbPrismApp.ViewModels;
 
 namespace XBreweryDbPrismApp.Views
@@ -8,6 +11,7 @@ namespace XBreweryDbPrismApp.Views
         public MainPage()
         {
             InitializeComponent();
+
             BreweryListView.ItemSelected += (sender, e) => BreweryListView.SelectedItem = null;
         }
 
@@ -15,12 +19,6 @@ namespace XBreweryDbPrismApp.Views
         {
             base.OnAppearing();
             (BindingContext as MainPageViewModel)?.OnResume();
-        }
-
-
-        private void BreweryListViewOnItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            (BindingContext as MainPageViewModel)?.Navigate();
         }
     }
 }

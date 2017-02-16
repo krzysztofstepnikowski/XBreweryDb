@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using System;
+using Prism.Mvvm;
 using Prism.Navigation;
 using XBreweryDbPrismApp.Features.Details;
 
@@ -9,7 +10,8 @@ namespace XBreweryDbPrismApp.ViewModels
         
         
         private readonly IDetailPageFeatures _detailPageFeatures;
-        private string _description;
+
+        private string _description="Test";
         public string Description
         {
             get
@@ -33,8 +35,8 @@ namespace XBreweryDbPrismApp.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            var breweryId = (string) parameters["id"];
-            _description = _detailPageFeatures.GetBreweryDescription(breweryId);
+//            string id = Convert.ToString(parameters["id"]);
+//            Description = _detailPageFeatures.GetBreweryDescription(id);
 
         }
     }

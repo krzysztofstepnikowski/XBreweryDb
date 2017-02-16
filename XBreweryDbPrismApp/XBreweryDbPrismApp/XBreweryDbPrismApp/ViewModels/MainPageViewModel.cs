@@ -5,12 +5,14 @@ using System.Diagnostics;
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Navigation;
+using Xamarin.Forms;
 using XBreweryDbPrismApp.Features.Main;
 using XBreweryDbPrismApp.Models;
+using XBreweryDbPrismApp.Views;
 
 namespace XBreweryDbPrismApp.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    public class MainPageViewModel : BindableBase, INavigationAware
     {
         private readonly IMainPageFeatures _mainPageFeatures;
         private readonly INavigationService _navigationService;
@@ -25,15 +27,32 @@ namespace XBreweryDbPrismApp.ViewModels
             set { SetProperty(ref _breweries, value); }
         }
 
-        private ICommand _navigateCommand;
+        private DelegateCommand<ItemTappedEventArgs> _goToDetailPage;
 
-        public ICommand NavigateCommand => _navigateCommand ?? (_navigateCommand = new DelegateCommand(Navigate));
+        public DelegateCommand<ItemTappedEventArgs> GoToDetailPage
+        {
+            get
+            {
+                if (_goToDetailPage == null)
+                {
+                    _goToDetailPage = new DelegateCommand<ItemTappedEventArgs>(async selected =>
+                    {
+                        NavigationParameters parameters = new NavigationParameters();
+                        //parameters.Add("id",(selected.Item as Brewery).Id);
+                        await _navigationService.NavigateAsync("DetailPage",null);
+                    });
+                }
+
+                return _goToDetailPage;
+            }
+        }
 
 
         public MainPageViewModel(IMainPageFeatures mainPageFeatures, INavigationService navigationService)
         {
             _mainPageFeatures = mainPageFeatures;
             _navigationService = navigationService;
+
             OnResume();
         }
 
@@ -58,10 +77,14 @@ namespace XBreweryDbPrismApp.ViewModels
             }
         }
 
-        public void Navigate()
+        public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            var navigationParameter = new NavigationParameters {{"id", _mainPageFeatures.GetBreweries().GetEnumerator().Current.Id}};
-            _navigationService.NavigateAsync("DetailPage", navigationParameter);
+            
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            
         }
     }
 }

@@ -12,7 +12,9 @@ namespace XBreweryDbPrismApp
 {
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+        public App(IPlatformInitializer initializer = null) : base(initializer)
+        {
+        }
 
         protected override void OnInitialized()
         {
@@ -23,17 +25,17 @@ namespace XBreweryDbPrismApp
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>();
+            
             Container.RegisterTypeForNavigation<MainPage,MainPageViewModel>();
-           // Container.RegisterTypeForNavigation<DetailPage,DetailPageViewModel>();
+            Container.RegisterTypeForNavigation<NavigationPage>();
+            Container.RegisterTypeForNavigation<DetailPage>();
+           
+
 
             var favoriteBrewerage = new HashSet<string>();
             var favoriteManager = new FavoriteBreweryManager(favoriteBrewerage);
             Container.RegisterInstance<IMainPageFeatures>(new MainPageFeature(favoriteManager,
                 new BreweryListProvider(favoriteBrewerage)));
-           
         }
-
-        
     }
 }
