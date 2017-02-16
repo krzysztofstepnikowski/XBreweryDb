@@ -3,26 +3,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:behaviors="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors"
+             xmlns:converters="clr-namespace:Askaiser.Mobile.Pillar.Converters;assembly=Askaiser.Mobile.Pillar"
+             xmlns:behaviors="clr-namespace:Askaiser.Mobile.Pillar.Behaviors;assembly=Askaiser.Mobile.Pillar"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="XBreweryDbPrismApp.Views.MainPage"
              Title="XBreweryDb"
              NavigationPage.BackButtonTitle="Back">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
 
     <StackLayout Orientation="Vertical" Padding="8,10,8,10" BackgroundColor="White">
         <ListView x:Name="BreweryListView"
                   RowHeight="50"
                   SeparatorColor="Silver"
                   ItemsSource="{Binding Breweries}">
-            <behaviors:Interaction.Behaviors>
 
-                <behaviors:BehaviorCollection>
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding GoToDetailPage}"
+                                                  EventArgsConverter="{StaticResource ItemTappedConverter}" />
+            </ListView.Behaviors>
 
-                    <behaviors:EventToCommand EventName="ItemTapped" Command="{Binding GoToDetailPage}" />
-
-                </behaviors:BehaviorCollection>
-
-            </behaviors:Interaction.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

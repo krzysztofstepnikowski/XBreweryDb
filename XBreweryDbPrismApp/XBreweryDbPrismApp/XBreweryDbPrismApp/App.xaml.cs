@@ -25,11 +25,9 @@ namespace XBreweryDbPrismApp
 
         protected override void RegisterTypes()
         {
-            
-            Container.RegisterTypeForNavigation<MainPage,MainPageViewModel>();
             Container.RegisterTypeForNavigation<NavigationPage>();
+            Container.RegisterTypeForNavigation<MainPage, MainPageViewModel>();
             Container.RegisterTypeForNavigation<DetailPage>();
-           
 
 
             var favoriteBrewerage = new HashSet<string>();

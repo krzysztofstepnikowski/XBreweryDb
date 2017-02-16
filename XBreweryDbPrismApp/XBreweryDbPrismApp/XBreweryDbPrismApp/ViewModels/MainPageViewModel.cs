@@ -2,13 +2,11 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Windows.Input;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 using XBreweryDbPrismApp.Features.Main;
 using XBreweryDbPrismApp.Models;
-using XBreweryDbPrismApp.Views;
 
 namespace XBreweryDbPrismApp.ViewModels
 {
@@ -38,8 +36,8 @@ namespace XBreweryDbPrismApp.ViewModels
                     _goToDetailPage = new DelegateCommand<ItemTappedEventArgs>(async selected =>
                     {
                         NavigationParameters parameters = new NavigationParameters();
-                        //parameters.Add("id",(selected.Item as Brewery).Id);
-                        await _navigationService.NavigateAsync("DetailPage",null);
+                        parameters.Add("id",(selected.Item as Brewery).Id);
+                        await _navigationService.NavigateAsync("DetailPage",parameters);
                     });
                 }
 
@@ -84,7 +82,12 @@ namespace XBreweryDbPrismApp.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            
+           
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+           
         }
     }
 }
