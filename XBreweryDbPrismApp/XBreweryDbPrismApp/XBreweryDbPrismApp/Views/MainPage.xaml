@@ -10,11 +10,11 @@
              Title="XBreweryDb"
              NavigationPage.BackButtonTitle="Back">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:ItemTappedEventArgsConverter x:Key="ItemTappedConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
 
 
     <StackLayout Orientation="Vertical" Padding="8,10,8,10" BackgroundColor="White">
@@ -22,12 +22,11 @@
                   RowHeight="50"
                   SeparatorColor="Silver"
                   ItemsSource="{Binding Breweries}">
-
-            <ListView.Behaviors>
-                <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding GoToDetailPage}"
-                                                  EventArgsConverter="{StaticResource ItemTappedConverter}" />
-            </ListView.Behaviors>
-
+          
+           <ListView.Behaviors>
+      <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding GoToDetailPage}" />
+</ListView.Behaviors>
+    
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
