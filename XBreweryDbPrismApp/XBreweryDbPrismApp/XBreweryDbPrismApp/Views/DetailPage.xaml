@@ -33,7 +33,9 @@
         </ScrollView>
 
         <Button
-            Text="Add to favorites"
+            Text="{Binding FavoriteButtonText}"
+            Command="{Binding FavoriteCommand}"
+            CommandParameter="{Binding IsFavorite}"
             BackgroundColor="Red"
             TextColor="White"
             HorizontalOptions="FillAndExpand" />
