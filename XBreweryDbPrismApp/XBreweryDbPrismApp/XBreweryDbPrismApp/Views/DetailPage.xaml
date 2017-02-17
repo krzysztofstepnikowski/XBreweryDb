@@ -36,7 +36,7 @@
             Text="{Binding FavoriteButtonText}"
             Command="{Binding FavoriteCommand}"
             CommandParameter="{Binding IsFavorite}"
-            BackgroundColor="Red"
+            BackgroundColor="{Binding FavoriteButtonBackgroundColor}"
             TextColor="White"
             HorizontalOptions="FillAndExpand" />
     </StackLayout>

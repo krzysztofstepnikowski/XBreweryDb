@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace XBreweryDbPrismApp.Models
 {
@@ -12,13 +9,20 @@ namespace XBreweryDbPrismApp.Models
         public bool IsFavorite { get; set; }
         public string Name { get; set; }
 
-        public Brewery() { }
+        public FileImageSource FileImageSource { get; set; }
 
-        public Brewery(string id, bool isFavorite, string name)
+        public ICommand FavoriteCommand { get; set; }
+
+        public Brewery()
+        {
+        }
+
+        public Brewery(string id, bool isFavorite, string name, FileImageSource fileImageSource)
         {
             Id = id;
             IsFavorite = isFavorite;
             Name = name;
+            FileImageSource = fileImageSource;
         }
     }
 }

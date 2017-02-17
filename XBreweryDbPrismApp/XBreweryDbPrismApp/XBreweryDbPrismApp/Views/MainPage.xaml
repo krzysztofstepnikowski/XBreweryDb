@@ -36,7 +36,9 @@
                                    FontSize="18"
                                    TextColor="Black"
                                    Margin="5" />
-                            <Button Image="ic_favorite_border.png"
+                            <Button Image="{Binding FileImageSource}"
+                                    Command="{Binding FavoriteCommand}"
+                                    CommandParameter="{Binding IsFavorite}"
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="EndAndExpand"
                                     HeightRequest="80"

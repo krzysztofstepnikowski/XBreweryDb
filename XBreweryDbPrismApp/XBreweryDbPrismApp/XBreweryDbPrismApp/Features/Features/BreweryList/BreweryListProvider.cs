@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using XBreweryDbPrismApp.Models;
 
 namespace XBreweryDbPrismApp.Features.Features.BreweryList
@@ -18,7 +15,8 @@ namespace XBreweryDbPrismApp.Features.Features.BreweryList
                 {
                     Id = i.ToString(),
                     IsFavorite = _favorites.Contains(i.ToString()),
-                    Name = "Brewery " + i
+                    Name = "Brewery " + i,
+                    FileImageSource = "ic_favorite.png"
                 })
                 .ToList();
         }

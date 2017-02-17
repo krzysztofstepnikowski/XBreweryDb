@@ -2,6 +2,7 @@
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Xamarin.Forms;
 using XBreweryDbPrismApp.Features.Details;
 
 namespace XBreweryDbPrismApp.ViewModels
@@ -17,11 +18,7 @@ namespace XBreweryDbPrismApp.ViewModels
         public string Id
         {
             get { return _id; }
-            set
-            {
-                SetProperty(ref _id, value); 
-               
-            }
+            set { SetProperty(ref _id, value); }
         }
 
         private string _description;
@@ -38,11 +35,15 @@ namespace XBreweryDbPrismApp.ViewModels
         public string FavoriteButtonText
         {
             get { return _favoriteButtonText; }
-            set
-            {
-                SetProperty(ref _favoriteButtonText, value); 
-                //CheckIsFavoriteButtonChanged();
-            }
+            set { SetProperty(ref _favoriteButtonText, value); }
+        }
+
+        private Color _favoriteButtonBackgroundColor;
+
+        public Color FavoriteButtonBackgroundColor
+        {
+            get { return _favoriteButtonBackgroundColor; }
+            set { SetProperty(ref _favoriteButtonBackgroundColor, value); }
         }
 
         private bool _isFavorite;
@@ -54,6 +55,7 @@ namespace XBreweryDbPrismApp.ViewModels
             set
             {
                 FavoriteButtonText = value ? "Delete from favorites" : "Add to favorites";
+                FavoriteButtonBackgroundColor = value ? Color.Green : Color.Red;
                 SetProperty(ref _isFavorite, value);
             }
         }
@@ -64,38 +66,30 @@ namespace XBreweryDbPrismApp.ViewModels
 
         public ICommand FavoriteCommand
         {
-            get
-            {
-                if (_favoriteCommand == null)
-                {
-                    _favoriteCommand = new DelegateCommand(() =>
-                    {
-                        _isFavorite = !_isFavorite;
-
-                       
-
-                        if (IsFavorite)
-                        {
-                            _detailPageFeatures.SetAsFavorite(Id);
-                        }
-
-                        else
-                        {
-                            _detailPageFeatures.RemoveFromFavorites(Id);
-                        }
-
-                        CheckIsFavoriteButtonChanged();
-
-                    });
-                }
-
-                return _favoriteCommand;
-            }
+            get { return _favoriteCommand; }
         }
 
         public DetailPageViewModel(IDetailPageFeatures detailPageFeatures)
         {
             _detailPageFeatures = detailPageFeatures;
+
+            _favoriteCommand = new DelegateCommand(() =>
+            {
+                IsFavorite = !IsFavorite;
+
+
+                if (IsFavorite)
+                {
+                    _detailPageFeatures.SetAsFavorite(Id);
+                }
+
+                else
+                {
+                    _detailPageFeatures.RemoveFromFavorites(Id);
+                }
+
+                CheckIsFavoriteButtonChanged();
+            });
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
