@@ -3,7 +3,6 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Xamarin.Forms;
-using XBreweryDbPrismApp.Features.Details;
 using XBreweryDbPrismApp.Views.Details;
 
 namespace XBreweryDbPrismApp.ViewModels
@@ -31,21 +30,12 @@ namespace XBreweryDbPrismApp.ViewModels
             set { SetProperty(ref _description, value); }
         }
 
-        private string _favoriteButtonText;
 
-        public string FavoriteButtonText
-        {
-            get { return _favoriteButtonText; }
-            set { SetProperty(ref _favoriteButtonText, value); }
-        }
 
-        private Color _favoriteButtonBackgroundColor;
+        public string FavoriteButtonText => IsFavorite ? "Delete from favorites" : "Add to favorites";
 
-        public Color FavoriteButtonBackgroundColor
-        {
-            get { return _favoriteButtonBackgroundColor; }
-            set { SetProperty(ref _favoriteButtonBackgroundColor, value); }
-        }
+        public Color FavoriteButtonBackgroundColor => IsFavorite ? Color.Green : Color.Red;
+       
 
         private bool _isFavorite;
 
@@ -55,9 +45,9 @@ namespace XBreweryDbPrismApp.ViewModels
 
             set
             {
-                FavoriteButtonText = value ? "Delete from favorites" : "Add to favorites";
-                FavoriteButtonBackgroundColor = value ? Color.Green : Color.Red;
                 SetProperty(ref _isFavorite, value);
+                OnPropertyChanged(() => FavoriteButtonText);
+                OnPropertyChanged(() => FavoriteButtonBackgroundColor);
             }
         }
 

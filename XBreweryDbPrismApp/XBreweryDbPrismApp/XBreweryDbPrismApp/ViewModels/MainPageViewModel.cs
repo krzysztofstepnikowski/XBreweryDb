@@ -101,10 +101,6 @@ namespace XBreweryDbPrismApp.ViewModels
                 }
 
                 Breweries = new ObservableCollection<BreweryViewModel>(breweries);
-
-
-                
-
             }
 
             catch (Exception ex)
