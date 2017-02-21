@@ -2,7 +2,7 @@
 
 namespace XBreweryDbApp.Features.Favorite
 {
-    class FavoriteBreweryManager
+    public class FavoriteBreweryManager
     {
         private HashSet<string> _favoriteBrewerage;
 

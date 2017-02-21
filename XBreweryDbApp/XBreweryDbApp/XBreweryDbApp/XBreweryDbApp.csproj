@@ -43,6 +43,9 @@
     <Compile Include="Features\BreweryDescription\BreweryDescriptionProvider.cs" />
     <Compile Include="Features\Favorite\FavoriteBreweryManager.cs" />
     <Compile Include="Features\BreweryList\BreweryListProvider.cs" />
+    <Compile Include="Models\BreweryViewModel.cs" />
+    <Compile Include="ViewModels\DetailPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\Details\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>

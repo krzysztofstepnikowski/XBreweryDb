@@ -1,41 +1,44 @@
 ﻿using System.Collections.Generic;
 using Prism.Unity;
 using Xamarin.Forms;
-using XBreweryDbApp.Adapters.Features;
 using XBreweryDbApp.Features.BreweryDescription;
 using XBreweryDbApp.Features.BreweryList;
 using XBreweryDbApp.Features.Favorite;
+using XBreweryDbApp.ViewModels;
+using Microsoft.Practices.Unity;
+using XBreweryDbApp.Views.Details;
+using XBreweryDbApp.Adapters.Features;
 
 namespace XBreweryDbApp
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App()
+        public App(IPlatformInitializer initializer = null) : base(initializer)
+        {
+        }
+
+        protected override void OnInitialized()
         {
             InitializeComponent();
 
-            var favoriteBrewerage = new HashSet<string>();
+            NavigationService.NavigateAsync("NavigationPage/MainPage");
+        }
+
+        protected override void RegisterTypes()
+        {
+            var favoriteBrewerage = new HashSet<string>(); //moze byc tworzony raz
             var favoriteManager = new FavoriteBreweryManager(favoriteBrewerage);
-            var detailPageFacade = new DetailPageFeatureFacade(favoriteManager, new BreweryDescriptionProvider());
-            var mainPageFacade = new MainPageFeatureFacade(favoriteManager, new BreweryListProvider(favoriteBrewerage), detailPageFacade);
 
-            MainPage = new NavigationPage(new MainPage(mainPageFacade));
-        }
+            Container.RegisterTypeForNavigation<NavigationPage>();
+            Container.RegisterTypeForNavigation<MainPage, MainPageViewModel>();
+            Container.RegisterTypeForNavigation<DetailPage, DetailPageViewModel>();
+            Container.RegisterType<IMainPageFeatures, IMainPageFeatures>();
 
+            Container.RegisterType<BreweryListProvider>(new InjectionConstructor(favoriteBrewerage));
+            Container.RegisterType<FavoriteBreweryManager>(new InjectionConstructor(favoriteBrewerage));
 
-        protected override void OnStart()
-        {
-            // Handle when your app starts
-        }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
+            Container.RegisterInstance<IDetailPageFeatures>(new DetailPageFeatureFacade(new BreweryDescriptionProvider(),
+                favoriteManager));
         }
     }
 }

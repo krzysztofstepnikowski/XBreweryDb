@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace XBreweryDbApp.Features.BreweryList
 {
-    class BreweryListProvider
+    public class BreweryListProvider
     {
         private HashSet<string> _favorites;
 

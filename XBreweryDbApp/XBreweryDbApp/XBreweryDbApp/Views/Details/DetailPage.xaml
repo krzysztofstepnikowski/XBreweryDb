@@ -2,42 +2,43 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="XBreweryDbApp.DetailPage"
              Title="Details"
              NavigationPage.BackButtonTitle="Back">
 
-  
 
+  <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="15,10,10,15">
 
-        <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="15,10,10,15">
+    <Image Source="icon.png" />
+    <Label TextColor="Black"
+           FontAttributes="Bold"
+           FontSize="17"
+           Text="Volt:" />
+    <Label TextColor="Gray"
+           FontAttributes="Italic"
+           FontSize="15"
+           Text="5,6%" />
+    <Label TextColor="Black"
+           FontAttributes="Bold"
+           FontSize="17"
+           Text="Description:" />
 
-            <Image Source="icon.png" />
-            <Label TextColor="Black"
-                   FontAttributes="Bold"
-                   FontSize="17"
-                   Text="Volt:" />
-            <Label TextColor="Gray"
-                   FontAttributes="Italic"
-                   FontSize="15"
-                   Text="5,6%" />
-            <Label TextColor="Black"
-                   FontAttributes="Bold"
-                   FontSize="17"
-                   Text="Description:" />
+    <ScrollView>
+      <Label Text="{Binding Description}"
+             TextColor="Gray"
+             FontAttributes="Italic"
+             FontSize="15" />
+    </ScrollView>
 
-            <ScrollView>
-                <Label x:Name="DescriptionLabel"
-                  TextColor="Gray"
-                  FontAttributes="Italic"
-                  FontSize="15" />
-            </ScrollView>
-
-            <Button x:Name="FavoriteButton"
-                Text="Add to favorites"
-                BackgroundColor="Red"
-                TextColor="White"
-                HorizontalOptions="FillAndExpand">                
-            </Button>
-        </StackLayout>
+    <Button
+        Text="{Binding FavoriteButtonText}"
+        Command="{Binding FavoriteCommand}"
+        CommandParameter="{Binding IsFavorite}"
+        BackgroundColor="{Binding FavoriteButtonBackgroundColor}"
+        TextColor="White"
+        HorizontalOptions="FillAndExpand" />
+  </StackLayout>
 
 </ContentPage>
