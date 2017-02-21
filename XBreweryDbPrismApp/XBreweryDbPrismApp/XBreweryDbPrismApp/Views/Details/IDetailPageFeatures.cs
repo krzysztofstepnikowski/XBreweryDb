@@ -1,4 +1,4 @@
-﻿namespace XBreweryDbPrismApp.Features.Details
+﻿namespace XBreweryDbPrismApp.Views.Details
 {
     public interface IDetailPageFeatures
     {

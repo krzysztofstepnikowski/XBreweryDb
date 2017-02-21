@@ -1,10 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using Xamarin.Forms;
-using XBreweryDbPrismApp.Models;
+﻿using Xamarin.Forms;
 using XBreweryDbPrismApp.ViewModels;
 
-namespace XBreweryDbPrismApp.Views
+namespace XBreweryDbPrismApp.Views.Main
 {
     public partial class MainPage : ContentPage
     {

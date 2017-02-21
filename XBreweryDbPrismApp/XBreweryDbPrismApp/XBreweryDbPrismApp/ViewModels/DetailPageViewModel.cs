@@ -4,6 +4,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Xamarin.Forms;
 using XBreweryDbPrismApp.Features.Details;
+using XBreweryDbPrismApp.Views.Details;
 
 namespace XBreweryDbPrismApp.ViewModels
 {

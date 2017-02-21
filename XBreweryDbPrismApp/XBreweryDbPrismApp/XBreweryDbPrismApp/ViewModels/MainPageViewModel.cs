@@ -6,8 +6,8 @@ using System.Windows.Input;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
-using XBreweryDbPrismApp.Features.Main;
 using XBreweryDbPrismApp.Models;
+using XBreweryDbPrismApp.Views.Main;
 
 namespace XBreweryDbPrismApp.ViewModels
 {
@@ -88,7 +88,7 @@ namespace XBreweryDbPrismApp.ViewModels
         }
 
 
-        private void OnResume()
+        public void OnResume()
         {
             try
             {

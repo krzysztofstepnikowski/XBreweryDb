@@ -6,7 +6,7 @@
              xmlns:converters="clr-namespace:Askaiser.Mobile.Pillar.Converters;assembly=Askaiser.Mobile.Pillar"
              xmlns:behaviors="clr-namespace:Askaiser.Mobile.Pillar.Behaviors;assembly=Askaiser.Mobile.Pillar"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="XBreweryDbPrismApp.Views.MainPage"
+             x:Class="XBreweryDbPrismApp.Views.Main.MainPage"
              Title="XBreweryDb"
              NavigationPage.BackButtonTitle="Back">
 

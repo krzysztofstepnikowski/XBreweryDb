@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 using XBreweryDbPrismApp.Models;
 
-namespace XBreweryDbPrismApp.Features.Main
+namespace XBreweryDbPrismApp.Views.Main
 {
     public interface IMainPageFeatures
     {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XBreweryDbPrismApp.Features.Features.BreweryDescription;
-using XBreweryDbPrismApp.Features.Features.Favorite;
+﻿using XBreweryDbPrismApp.Features.BreweryDescription;
+using XBreweryDbPrismApp.Features.Favorite;
+using XBreweryDbPrismApp.Views.Details;
 
 namespace XBreweryDbPrismApp.Features.Details
 {

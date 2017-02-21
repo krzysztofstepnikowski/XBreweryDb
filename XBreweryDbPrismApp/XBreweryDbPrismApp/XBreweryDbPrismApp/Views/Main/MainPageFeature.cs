@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using XBreweryDbPrismApp.Features.Details;
-using XBreweryDbPrismApp.Features.Features.BreweryList;
-using XBreweryDbPrismApp.Features.Features.Favorite;
+using XBreweryDbPrismApp.Features.BreweryList;
+using XBreweryDbPrismApp.Features.Favorite;
 using XBreweryDbPrismApp.Models;
-using XBreweryDbPrismApp.Views;
+using XBreweryDbPrismApp.Views.Main;
 
 namespace XBreweryDbPrismApp.Features.Main
 {

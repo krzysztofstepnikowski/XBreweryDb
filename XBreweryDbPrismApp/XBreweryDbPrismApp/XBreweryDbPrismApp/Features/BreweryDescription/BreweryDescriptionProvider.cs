@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace XBreweryDbPrismApp.Features.Features.BreweryDescription
+namespace XBreweryDbPrismApp.Features.BreweryDescription
 {
     public class BreweryDescriptionProvider
     {

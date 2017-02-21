@@ -1,4 +1,4 @@
-﻿namespace XBreweryDbPrismApp.Features.Features.BreweryList
+﻿namespace XBreweryDbPrismApp.Features.BreweryList
 {
     public class Brewery
     {

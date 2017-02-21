@@ -3,12 +3,13 @@ using Microsoft.Practices.Unity;
 using Prism.Unity;
 using Xamarin.Forms;
 using XBreweryDbPrismApp.Features.Details;
-using XBreweryDbPrismApp.Features.Features.BreweryDescription;
-using XBreweryDbPrismApp.Features.Features.BreweryList;
-using XBreweryDbPrismApp.Features.Features.Favorite;
 using XBreweryDbPrismApp.Features.Main;
-using XBreweryDbPrismApp.Views;
 using XBreweryDbPrismApp.ViewModels;
+using XBreweryDbPrismApp.Features.Favorite;
+using XBreweryDbPrismApp.Views.Main;
+using XBreweryDbPrismApp.Features.BreweryList;
+using XBreweryDbPrismApp.Views.Details;
+using XBreweryDbPrismApp.Features.BreweryDescription;
 
 namespace XBreweryDbPrismApp
 {
@@ -31,7 +32,7 @@ namespace XBreweryDbPrismApp
             var favoriteManager = new FavoriteBreweryManager(favoriteBrewerage);
 
             Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage,MainPageViewModel>();
+            Container.RegisterTypeForNavigation<MainPage, MainPageViewModel>();
             Container.RegisterTypeForNavigation<DetailPage, DetailPageViewModel>();
             Container.RegisterType<IMainPageFeatures, MainPageFeature>();
 

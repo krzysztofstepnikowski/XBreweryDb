@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace XBreweryDbPrismApp.Features.Features.BreweryList
+namespace XBreweryDbPrismApp.Features.BreweryList
 {
     public class BreweryListProvider
     {
