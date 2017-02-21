@@ -7,7 +7,7 @@ namespace XBreweryDbPrismApp.Features.Main
 {
     public interface IMainPageFeatures
     {
-        IEnumerable<Brewery> GetBreweries();
+        IEnumerable<BreweryViewModel> GetBreweries();
         void SetAsFavorite(string id);
         void RemoveFromFavorites(string id);
 

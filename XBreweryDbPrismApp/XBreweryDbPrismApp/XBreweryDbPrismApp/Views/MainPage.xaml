@@ -28,26 +28,27 @@
             </ListView.Behaviors>
 
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="3,5,3,5">
-                            <Image Source="icon.png" />
-                            <Label Text="{Binding Name}"
-                                   FontSize="18"
-                                   TextColor="Black"
-                                   Margin="5" />
-                            <Button Image="{Binding FileImageSource}"
-                                    Command="{Binding FavoriteCommand}"
-                                    CommandParameter="{Binding IsFavorite}"
-                                    BackgroundColor="Transparent"
-                                    HorizontalOptions="EndAndExpand"
-                                    HeightRequest="80"
-                                    WidthRequest="40"
-                                    BorderColor="White"
-                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
+              <DataTemplate>
+                
+                <ViewCell>
+                  <StackLayout Orientation="Horizontal" Padding="3,5,3,5">
+                    <Image Source="icon.png" />
+                    <Label Text="{Binding Name}"
+                           FontSize="18"
+                           TextColor="Black"
+                           Margin="5" />
+                    <Button Image="{Binding FileImagePath}"
+                            Command="{Binding FavoriteCommand}"
+                            CommandParameter="{Binding .}"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="EndAndExpand"
+                            HeightRequest="80"
+                            WidthRequest="40"
+                            BorderColor="White"
+                            VerticalOptions="EndAndExpand" />
+                  </StackLayout>
+                </ViewCell>
+              </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>

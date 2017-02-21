@@ -38,11 +38,12 @@
     <Compile Include="Features\Details\DetailPageFeature.cs" />
     <Compile Include="Features\Details\IDetailPageFeatures.cs" />
     <Compile Include="Features\Features\BreweryDescription\BreweryDescriptionProvider.cs" />
+    <Compile Include="Features\Features\BreweryList\Brewery.cs" />
     <Compile Include="Features\Features\BreweryList\BreweryListProvider.cs" />
     <Compile Include="Features\Features\Favorite\FavoriteBreweryManager.cs" />
     <Compile Include="Features\Main\IMainPageFeatures.cs" />
     <Compile Include="Features\Main\MainPageFeature.cs" />
-    <Compile Include="Models\Brewery.cs" />
+    <Compile Include="Models\BreweryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />

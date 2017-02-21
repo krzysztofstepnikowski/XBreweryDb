@@ -8,6 +8,7 @@ using XBreweryDbPrismApp.Features.Features.BreweryList;
 using XBreweryDbPrismApp.Features.Features.Favorite;
 using XBreweryDbPrismApp.Features.Main;
 using XBreweryDbPrismApp.Views;
+using XBreweryDbPrismApp.ViewModels;
 
 namespace XBreweryDbPrismApp
 {
@@ -26,15 +27,16 @@ namespace XBreweryDbPrismApp
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage>();
-            Container.RegisterTypeForNavigation<DetailPage>();
-
-
-            var favoriteBrewerage = new HashSet<string>();
+            var favoriteBrewerage = new HashSet<string>(); //moze byc tworzony raz
             var favoriteManager = new FavoriteBreweryManager(favoriteBrewerage);
-            Container.RegisterInstance<IMainPageFeatures>(new MainPageFeature(favoriteManager,
-                new BreweryListProvider(favoriteBrewerage)));
+
+            Container.RegisterTypeForNavigation<NavigationPage>();
+            Container.RegisterTypeForNavigation<MainPage,MainPageViewModel>();
+            Container.RegisterTypeForNavigation<DetailPage, DetailPageViewModel>();
+            Container.RegisterType<IMainPageFeatures, MainPageFeature>();
+
+            Container.RegisterType<BreweryListProvider>(new InjectionConstructor(favoriteBrewerage));
+            Container.RegisterType<FavoriteBreweryManager>(new InjectionConstructor(favoriteBrewerage));
 
             Container.RegisterInstance<IDetailPageFeatures>(new DetailPageFeature(new BreweryDescriptionProvider(),
                 favoriteManager));

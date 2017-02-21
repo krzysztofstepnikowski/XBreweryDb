@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using XBreweryDbPrismApp.Models;
 
 namespace XBreweryDbPrismApp.Features.Features.BreweryList
 {
@@ -16,7 +15,7 @@ namespace XBreweryDbPrismApp.Features.Features.BreweryList
                     Id = i.ToString(),
                     IsFavorite = _favorites.Contains(i.ToString()),
                     Name = "Brewery " + i,
-                    FileImageSource = "ic_favorite.png"
+                   
                 })
                 .ToList();
         }

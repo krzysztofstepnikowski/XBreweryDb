@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XBreweryDbPrismApp.Features.Details;
@@ -22,9 +23,15 @@ namespace XBreweryDbPrismApp.Features.Main
             _breweryListProvider = breweryListProvider;
         }
 
-        public IEnumerable<Brewery> GetBreweries()
+        public IEnumerable<BreweryViewModel> GetBreweries()
         {
-            return _breweryListProvider.GetBreweries();
+            return _breweryListProvider.GetBreweries().Select(brewery => new BreweryViewModel()
+            {
+                Id=brewery.Id,
+                Name=brewery.Name,
+                IsFavorite=brewery.IsFavorite
+            }
+            ).ToList();
         }
 
         public void SetAsFavorite(string id)

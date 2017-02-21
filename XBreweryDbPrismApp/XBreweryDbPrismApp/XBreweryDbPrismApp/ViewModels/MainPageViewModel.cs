@@ -18,37 +18,22 @@ namespace XBreweryDbPrismApp.ViewModels
 
         #region Properties
 
-        private ObservableCollection<Brewery> _breweries;
+        private ObservableCollection<BreweryViewModel> _breweries;
 
-        public ObservableCollection<Brewery> Breweries
+        public ObservableCollection<BreweryViewModel> Breweries
         {
             get { return _breweries; }
 
             set { SetProperty(ref _breweries, value); }
         }
 
-        private FileImageSource _fileImageSource;
-
-        public FileImageSource FileImageSource
-        {
-            get { return _fileImageSource.File; }
-            set
-            {
-                var storage = _fileImageSource.File;
-                SetProperty(ref storage, value);
-            }
-        }
 
         private bool _isFavorite;
 
         public bool IsFavorite
         {
             get { return _isFavorite; }
-            set
-            {
-                FileImageSource = value ? "ic_favorite_border.png" : "ic_favorite.png";
-                SetProperty(ref _isFavorite, value);
-            }
+            set { SetProperty(ref _isFavorite, value); }
         }
 
         #endregion
@@ -64,10 +49,6 @@ namespace XBreweryDbPrismApp.ViewModels
 
         private ICommand _favoriteCommand;
 
-        public ICommand FavoriteCommand
-        {
-            get { return _favoriteCommand; }
-        }
 
         #endregion
 
@@ -75,52 +56,55 @@ namespace XBreweryDbPrismApp.ViewModels
         {
             _mainPageFeatures = mainPageFeatures;
             _navigationService = navigationService;
-          
+
 
             _goToDetailPage = new DelegateCommand<ItemTappedEventArgs>(async selected =>
             {
                 NavigationParameters parameters = new NavigationParameters();
-                parameters.Add("id", (selected.Item as Brewery).Id);
+                parameters.Add("id", (selected.Item as BreweryViewModel).Id);
                 await _navigationService.NavigateAsync("DetailPage", parameters);
             });
 
-            _favoriteCommand = new DelegateCommand<Brewery>(brewery =>
+            _favoriteCommand = new DelegateCommand<BreweryViewModel>(brewery =>
             {
-                IsFavorite = !IsFavorite;
+                brewery.IsFavorite = !brewery.IsFavorite;
+
 
                 var id = brewery.Id;
 
 
-                if (IsFavorite)
+                if (brewery.IsFavorite)
                 {
                     _mainPageFeatures.SetAsFavorite(id);
-                  
                 }
 
                 else
                 {
                     _mainPageFeatures.RemoveFromFavorites(id);
                 }
-
-                CheckIsFavoriteButtonChanged();
             });
 
             OnResume();
         }
 
 
-        public void OnResume()
+        private void OnResume()
         {
             try
             {
-                Breweries = new ObservableCollection<Brewery>();
-
+               
                 var breweries = _mainPageFeatures.GetBreweries();
 
-                foreach (var brewery in breweries)
+                foreach(var item in breweries)
                 {
-                    Breweries.Add(new Brewery() {Id = brewery.Id, IsFavorite = brewery.IsFavorite, Name = brewery.Name});
+                    item.FavoriteCommand = _favoriteCommand;
                 }
+
+                Breweries = new ObservableCollection<BreweryViewModel>(breweries);
+
+
+                
+
             }
 
             catch (Exception ex)
@@ -139,11 +123,6 @@ namespace XBreweryDbPrismApp.ViewModels
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-        }
-
-        private void CheckIsFavoriteButtonChanged()
-        {
-            IsFavorite = Breweries.GetEnumerator().Current.IsFavorite;
         }
     }
 }
