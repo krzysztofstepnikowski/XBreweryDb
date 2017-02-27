@@ -5,10 +5,7 @@ Copyright ⓒ 2016
 Krzysztof Stepnikowski <br />
 Pod kierunkiem: Bartłomiej Rogowski (@brogowski)
 
-Aplikacja stworzona za pomocą technologii Xamarin, zawierająca dane o piwach pobranych z serwisu <br />
-http://www.brewerydb.com/
+
+Aplikacja stworzona za pomocą technologii Xamarin z wykorzystaniem frameworka <b> Prism </b>
 
 Wszelkie prawa zastrzezone.
-
-Ten utwór dziala na licencji <b>Creative Commons</b>. <br />
-Uznanie autorstwa - Użycie niekomercyjne - Na tych samych warunkach 4.0 Międzynarodowe
