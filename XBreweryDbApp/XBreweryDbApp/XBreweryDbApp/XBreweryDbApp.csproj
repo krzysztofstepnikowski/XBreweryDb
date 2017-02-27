@@ -45,6 +45,7 @@
     <Compile Include="Features\BreweryList\BreweryListProvider.cs" />
     <Compile Include="Models\BreweryViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.Commands.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\Details\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
@@ -70,6 +71,7 @@
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
+    <Compile Include="ViewModels\MainPageViewModel.Properties.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Askaiser.Mobile.Pillar, Version=0.0.4.0, Culture=neutral, processorArchitecture=MSIL">

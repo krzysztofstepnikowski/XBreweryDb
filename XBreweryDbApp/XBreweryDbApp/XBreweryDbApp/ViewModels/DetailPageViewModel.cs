@@ -7,58 +7,10 @@ using System.Windows.Input;
 
 namespace XBreweryDbApp.ViewModels
 {
-    public class DetailPageViewModel : BindableBase, INavigationAware
+    public partial class DetailPageViewModel : BindableBase, INavigationAware
     {
         private readonly IDetailPageFeatures _detailPageFeatures;
 
-        #region Properties
-
-        private string _id;
-
-        public string Id
-        {
-            get { return _id; }
-            set { SetProperty(ref _id, value); }
-        }
-
-        private string _description;
-
-        public string Description
-        {
-            get { return _description; }
-
-            set { SetProperty(ref _description, value); }
-        }
-
-
-
-        public string FavoriteButtonText => IsFavorite ? "Delete from favorites" : "Add to favorites";
-
-        public Color FavoriteButtonBackgroundColor => IsFavorite ? Color.Green : Color.Red;
-
-
-        private bool _isFavorite;
-
-        public bool IsFavorite
-        {
-            get { return _isFavorite; }
-
-            set
-            {
-                SetProperty(ref _isFavorite, value);
-                OnPropertyChanged(() => FavoriteButtonText);
-                OnPropertyChanged(() => FavoriteButtonBackgroundColor);
-            }
-        }
-
-        #endregion
-
-        private ICommand _favoriteCommand;
-
-        public ICommand FavoriteCommand
-        {
-            get { return _favoriteCommand; }
-        }
 
         public DetailPageViewModel(IDetailPageFeatures detailPageFeatures)
         {
