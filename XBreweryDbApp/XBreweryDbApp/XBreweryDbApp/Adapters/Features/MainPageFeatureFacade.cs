@@ -3,7 +3,6 @@ using System.Linq;
 using XBreweryDbApp.Features.BreweryList;
 using XBreweryDbApp.Features.Favorite;
 using XBreweryDbApp.Models;
-using XBreweryDbApp.Views.Details;
 
 namespace XBreweryDbApp.Adapters.Features
 {

@@ -1,12 +1,11 @@
 ﻿using Xamarin.Forms;
-using XBreweryDbApp.Views.Details;
 
-namespace XBreweryDbApp
+namespace XBreweryDbApp.Views.Details
 {
     public partial class DetailPage : ContentPage
     {
        
-        public DetailPage(string breweryId, IDetailPageFeatures features)
+        public DetailPage()
         {
             InitializeComponent();
         }

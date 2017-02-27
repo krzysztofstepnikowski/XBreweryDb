@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using XBreweryDbApp.ViewModels;
 
-namespace XBreweryDbApp
+namespace XBreweryDbApp.Views.Main
 {
     public partial class MainPage : ContentPage
     {

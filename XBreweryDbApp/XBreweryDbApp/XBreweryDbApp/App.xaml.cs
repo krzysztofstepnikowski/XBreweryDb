@@ -8,6 +8,7 @@ using XBreweryDbApp.ViewModels;
 using Microsoft.Practices.Unity;
 using XBreweryDbApp.Views.Details;
 using XBreweryDbApp.Adapters.Features;
+using XBreweryDbApp.Views.Main;
 
 namespace XBreweryDbApp
 {
@@ -32,7 +33,7 @@ namespace XBreweryDbApp
             Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage, MainPageViewModel>();
             Container.RegisterTypeForNavigation<DetailPage, DetailPageViewModel>();
-            Container.RegisterType<IMainPageFeatures, IMainPageFeatures>();
+            Container.RegisterType<IMainPageFeatures, MainPageFeatureFacade>();
 
             Container.RegisterType<BreweryListProvider>(new InjectionConstructor(favoriteBrewerage));
             Container.RegisterType<FavoriteBreweryManager>(new InjectionConstructor(favoriteBrewerage));

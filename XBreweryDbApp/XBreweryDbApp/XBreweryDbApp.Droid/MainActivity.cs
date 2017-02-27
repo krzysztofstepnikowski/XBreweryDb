@@ -2,6 +2,9 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Microsoft.Practices.Unity;
+using Prism;
+using Prism.Unity;
 
 namespace XBreweryDbApp.Droid
 {
@@ -18,7 +21,17 @@ namespace XBreweryDbApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            LoadApplication(new App(new AndroidInitializer()));
+        }
+
+
+    }
+
+    public class AndroidInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IUnityContainer container)
+        {
+
         }
     }
 }
