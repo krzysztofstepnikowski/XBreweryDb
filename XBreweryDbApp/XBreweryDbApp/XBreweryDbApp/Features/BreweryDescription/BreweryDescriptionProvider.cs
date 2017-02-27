@@ -2,7 +2,7 @@
 
 namespace XBreweryDbApp.Features.BreweryDescription
 {
-    class BreweryDescriptionProvider
+   public class BreweryDescriptionProvider
     {
         private const string LoremIpsum = @"Lorem ipsum dolor sit amet leo. Aenean pellentesque accumsan. 
                      Fusce wisi semper eu, neque. Sed at erat volutpat.Pellentesque egestas blandit, quam.

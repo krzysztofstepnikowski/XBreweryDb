@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+using System.Linq;
 using XBreweryDbApp.Features.BreweryList;
 using XBreweryDbApp.Features.Favorite;
-using XBreweryDbApp.Views.Details;
+using XBreweryDbApp.Models;
 
 namespace XBreweryDbApp.Adapters.Features
 {
@@ -11,20 +10,25 @@ namespace XBreweryDbApp.Adapters.Features
     {
         private readonly FavoriteBreweryManager _favoriteBreweryManager;
         private readonly BreweryListProvider _breweryListProvider;
-        private readonly IDetailPageFeatures _detailPageFeatures;
+      
 
         public MainPageFeatureFacade(FavoriteBreweryManager favoriteBreweryManager,
-            BreweryListProvider breweryListProvider,
-            IDetailPageFeatures detailPageFeatures)
+            BreweryListProvider breweryListProvider)
         {
             _favoriteBreweryManager = favoriteBreweryManager;
             _breweryListProvider = breweryListProvider;
-            _detailPageFeatures = detailPageFeatures;
+          
         }
 
-        public IEnumerable<Brewery> GetBreweries()
+        public IEnumerable<BreweryViewModel> GetBreweries()
         {
-            return _breweryListProvider.GetBreweries();
+            return _breweryListProvider.GetBreweries().Select(brewery => new BreweryViewModel()
+            {
+                Id = brewery.Id,
+                Name = brewery.Name,
+                IsFavorite = brewery.IsFavorite
+            }
+            ).ToList();
         }
 
         public void SetAsFavorite(string id)
@@ -37,9 +41,6 @@ namespace XBreweryDbApp.Adapters.Features
             _favoriteBreweryManager.RemoveFromFavorites(id);
         }
 
-        public async Task ShowBreweryDetailsAsync(string id, INavigation navigation)
-        {
-            await navigation.PushAsync(new DetailPage(id, _detailPageFeatures));
-        }
+      
     }
 }

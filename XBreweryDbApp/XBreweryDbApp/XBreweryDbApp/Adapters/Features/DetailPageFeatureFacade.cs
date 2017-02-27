@@ -4,15 +4,15 @@ using XBreweryDbApp.Views.Details;
 
 namespace XBreweryDbApp.Adapters.Features
 {
-    class DetailPageFeatureFacade : IDetailPageFeatures
+    public class DetailPageFeatureFacade : IDetailPageFeatures
     {
         private readonly BreweryDescriptionProvider _breweryDescriptionProvider;
         private readonly FavoriteBreweryManager _favoriteBreweryManager;
 
-        public DetailPageFeatureFacade(FavoriteBreweryManager favoriteBreweryManager, BreweryDescriptionProvider breweryDescriptionProvider)
+        public DetailPageFeatureFacade(BreweryDescriptionProvider breweryDescriptionProvider, FavoriteBreweryManager favoriteBreweryManager)
         {
-            _favoriteBreweryManager = favoriteBreweryManager;
             _breweryDescriptionProvider = breweryDescriptionProvider;
+            _favoriteBreweryManager = favoriteBreweryManager;
         }
 
         public string GetBreweryDescription(string breweryId)

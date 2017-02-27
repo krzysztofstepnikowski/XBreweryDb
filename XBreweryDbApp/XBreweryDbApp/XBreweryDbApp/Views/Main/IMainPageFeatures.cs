@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+using XBreweryDbApp.Models;
 
 namespace XBreweryDbApp
 {
     public interface IMainPageFeatures
     {
-        IEnumerable<Brewery> GetBreweries();
+        IEnumerable<BreweryViewModel> GetBreweries();
         void SetAsFavorite(string id);
         void RemoveFromFavorites(string id);
-        Task ShowBreweryDetailsAsync(string id, INavigation navigation);
+     
     }
 }
