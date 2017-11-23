@@ -3,9 +3,9 @@ Version 1.0
 
 Copyright ⓒ 2016
 Krzysztof Stepnikowski <br />
-Pod kierunkiem: Bartłomiej Rogowski (@brogowski)
+Pod kierunkiem: <b>Bartłomiej Rogowski </b> (<a href="https://github.com/brogowski">@brogowski</a>)
 
 
-Aplikacja stworzona za pomocą technologii Xamarin z wykorzystaniem frameworka <b> Prism </b>
+Aplikacja stworzona za pomocą technologii Xamarin z wykorzystaniem frameworka <b> Xamarin Forms i Prism</b>.
 
-Wszelkie prawa zastrzezone.
+Wszelkie prawa zastrzeżone.
